@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>과제 1</title>
+    </head>
+    <body>
+        <div>
+            <p>
+                <span>성인 수</span>
+                <input id="adultNum" type="text" value="성인 수를 입력해주세요">
+                <span>명</span>
+            </p>
+            <p>
+                <span>어린이 수</span>
+                <input id="childNum" type="text" value="어린이 수를 입력해주세요">
+                <span>명</span>
+            </p>
+            <button onclick="math()">계산</button>
+        </div>
+
+        <div>
+            <p> 
+                 <img id="image" src="images/smile.png">  
+            </p>
+           
+        </div>
+
+        <div>
+            <span>입장료</span>
+            <span id="totalPrice">
+            
+        </div>
+
+        <div>
+            <span>단체할인</span>
+            <input type="radio" name="fiveNum" value="yes"><span>예</span> 
+            <input type="radio" name="fiveNum" value="no"><span>아니요</span> 
+        </div>
+
+         <div>
+            <p>
+                <span>성인 1인당</span>
+                <input id="adultOnePrice" type="text" value="성인 1인당 가격">
+                <span>원</span>
+            </p>
+            <p>
+                <span>어린이 1인당</span>
+                <input id="childOnePrice" type="text" value="어린이 1인당 가격">
+                <span>원</span>
+            </p>
+            <p>
+                단체 할인 : 5명 이상 20%
+            </p>
+        </div>
+                  
+        <script>
+            function math(){
+                // 입력한 값 가져오기
+                let adultNum = document.querySelector('#adultNum');
+                let childNum = document.querySelector('#childNum');
+                let adultOnePrice = document.querySelector('#adultOnePrice');
+                let childOnePrice = document.querySelector('#childOnePrice');
+                let image = document.querySelector('#image');
+
+
+                // 각각의 가격 총합
+                let adultTotalPrice = Number(adultNum.value) * Number(adultOnePrice.value);
+                let childTotalPrice = Number(childNum.value) * Number(childOnePrice.value);
+                
+                // 총인원
+                let totalNum = Number(adultNum.value) + Number(childNum.value)
+                
+                // 라디오 값 받아오기
+                let radio = document.getElementsByName('fiveNum');
+                let selected = Array.from(radio).find(elem => elem.checked);
+                if(isNaN(adultTotalPrice) || isNaN(childTotalPrice)) {
+                    alert(`사용자가 입력한 값이 숫자가 아닙니다`);
+                    totalPrice.innerHTML = ``;
+                    image.src = 'images/sad.png';
+                    return;
+                } 
+                
+                if(selected.value == 'no'){
+                    if(totalNum >= 5) {
+                        alert(`5명이상이니 단체할인을 받으세요!`);
+                    totalPrice.innerHTML = `${adultTotalPrice + childTotalPrice} 원`;
+                    }
+                    totalPrice.innerHTML = `${adultTotalPrice + childTotalPrice} 원`;
+                } else if (selected.value == 'yes'){
+                    if(totalNum < 5) {
+                        alert(`단체할인을 받을수 없습니다!`);
+                        return;
+                    }
+                    totalPrice.innerHTML = `${(adultTotalPrice + childTotalPrice)*0.8} 원`;
+                }
+                 image.src = 'images/smile.png';
+            }
+        </script>
+
+    </body>
+</html>
