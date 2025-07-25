@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>상품관리</title>
+</head>
+
+<body>
+    <h3>
+        상품관리
+    </h3>
+    <div>
+        <p>
+            <%= name %>님
+        </p>
+    </div>
+    <div>
+        <button onclick="back()">
+            돌아가기
+        </button>
+    </div>
+    <script>
+        function back() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const username = urlParams.get('username');
+            const form = document.createElement('form');
+            form.setAttribute('action', '/page/mypage');
+            form.setAttribute('method', 'get')
+
+            const data1 = document.createElement('input');
+            data1.setAttribute('type', 'hidden');
+            data1.setAttribute('name', 'prevPage');
+            data1.setAttribute('value', '상품관리');
+            form.appendChild(data1);
+
+            const data2 = document.createElement('input');
+            data2.setAttribute('type', 'hidden');
+            data2.setAttribute('name', 'username');
+            data2.setAttribute('value', username);
+            form.appendChild(data2);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>웹서버에서 보내온 페이지</title>
+    </head>
+    <body>
+        <div>
+            <h3>로그인하세요</h3>
+        </div>
+        <!-- <div>
+            <form action="/page/first" method="get">
+                <input name="username" type="text" value="">
+                <input name="password" type="password" value="">
+
+                <button>로그인</button>
+            </form>
+        </div> -->
+        <div>
+            <input type="text" id="id">
+            <input type="password" id="password">
+            <button onclick="login()">로그인</button>
+        </div>
+
+        <script>
+            function login() {
+                console.log(`login 함수 실행됨`);
+
+                const form = document.createElement('form');
+                form.setAttribute('action','/page/mypage');
+                form.setAttribute('method','get');
+
+                const id = document.querySelector('#id');
+                const password = document.querySelector('#password');
+
+                const idData = document.createElement('input');
+                idData.setAttribute('type','hidden');
+                idData.setAttribute('name','username');
+                idData.setAttribute('value',id.value);
+                form.appendChild(idData);
+
+                const passwordData = document.createElement('input');
+                passwordData.setAttribute('type','hidden');
+                passwordData.setAttribute('name','password');
+                passwordData.setAttribute('value',password.value);
+                form.appendChild(passwordData);
+
+                document.body.appendChild(form);
+
+                form.submit();
+            }
+        </script>
+    </body>
+</html>

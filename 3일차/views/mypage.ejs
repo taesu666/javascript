@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+</head>
+
+<body>
+    <div>
+        <p>
+            <%= name %>님 환영합니다
+        </p>
+    </div>
+    <div>
+        <p>
+            <button>
+                <a href="/page/cus?username=<%= name %>">
+                    고객관리
+                </a>
+            </button>
+        </p>
+        <p>
+            <button>
+                <a href="/page/pro?username=<%= name %>">
+                    상품관리
+                </a>
+            </button>
+        </p>
+        <p>
+            <button>
+                <a href="/page/rev?username=<%= name %>">
+                    매출관리
+                </a>
+            </button>
+        </p>
+    </div>
+    <div>
+        <p>선택했던 화면 : <%= prevPage %>
+        </p>
+    </div>
+    <div>
+        <button>
+            <a href="/page/login">
+                로그아웃
+            </a>
+        </button>
+
+</body>
+
+</html>
