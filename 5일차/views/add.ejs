@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>고객 관리</title>
+</head>
+
+<body>
+
+    <div>
+        <h3>고객 정보 추가</h3>
+    </div>
+
+    <div>
+        <form action="/person/insert" method="get">
+            <input type="hidden" name="id" value="<%= params.id  %>">
+            <input type="text" name="name" value="">
+            <input type="text" name="age" value="">
+            <input type="text" name="mobile" value="">
+
+            <button>추가</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
